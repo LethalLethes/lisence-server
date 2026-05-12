@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+</head>
+<body style="font-family: Arial; padding: 20px;">
+
+<h2>🔑 License Admin Panel</h2>
+
+<form method="POST" action="/create">
+    <input name="key" placeholder="Yeni key yaz">
+    <button type="submit">Create Key</button>
+</form>
+
+<h3>📋 Keys</h3>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Key</th>
+        <th>HWID</th>
+    </tr>
+
+    {% for key, hwid in licenses.items() %}
+    <tr>
+        <td>{{ key }}</td>
+        <td>{{ hwid }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
