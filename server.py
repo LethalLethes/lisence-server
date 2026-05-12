@@ -1,9 +1,23 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
 
+# key database
 licenses = {}
 
+# 🧑‍💻 ADMIN PANEL (web UI)
+@app.route("/")
+def home():
+    return render_template("index.html", licenses=licenses)
+
+# 🔑 key yaratmaq
+@app.route("/create", methods=["POST"])
+def create():
+    key = request.form["key"]
+    licenses[key] = None
+    return ("OK")
+
+# 🔐 aktivasiya
 @app.route("/activate", methods=["POST"])
 def activate():
     data = request.json
